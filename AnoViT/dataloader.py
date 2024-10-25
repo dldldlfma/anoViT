@@ -11,7 +11,8 @@ def get_dataloader(args):
     obj_mean, obj_std = obj_stats_384(args.obj)
     trainT = T.Compose(
         [
-            T.Resize(args.image_size, Image.ANTIALIAS),
+            #T.Resize(args.image_size, Image.ANTIALIAS),
+            T.Resize(args.image_size, Image.Resampling.LANCZOS),
             T.ToTensor(),
             T.Normalize(mean=obj_mean, std=obj_std),
         ]
@@ -19,7 +20,8 @@ def get_dataloader(args):
 
     validT = T.Compose(
         [
-            T.Resize(args.image_size, Image.ANTIALIAS),
+            #T.Resize(args.image_size, Image.ANTIALIAS),
+            T.Resize(args.image_size, Image.Resampling.LANCZOS),
             T.ToTensor(),
             T.Normalize(mean=obj_mean, std=obj_std),
         ]
@@ -27,7 +29,8 @@ def get_dataloader(args):
 
     testT = T.Compose(
         [
-            T.Resize(args.image_size, Image.ANTIALIAS),
+            #T.Resize(args.image_size, Image.ANTIALIAS),
+            T.Resize(args.image_size, Image.Resampling.LANCZOS),
             T.ToTensor(),
             T.Normalize(mean=obj_mean, std=obj_std),
         ]
